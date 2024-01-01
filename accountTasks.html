@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <div slot="title" class="slds-p-horizontal_medium slds-align_absolute-center">
+            <h2 class="slds-card__header-title">Parent and Child Tasks</h2>
+        </div>
+        <div slot="actions" class="slds-p-horizontal_medium">
+            <lightning-button-icon icon-name="utility:refresh" alternative-text="Refresh" title="Refresh" onclick={refreshData}></lightning-button-icon>
+        </div>
+        <div class="slds-m-left_medium slds-m-right_medium slds-m-top_small">
+            <lightning-input type="checkbox" label="Hide Completed Tasks" checked={hideCompleted} onchange={toggleHideCompleted}></lightning-input>
+        </div>
+        <div class="slds-m-around_medium slds-box" style="height: 300px; overflow-y: auto;">
+            <lightning-datatable
+                key-field="Id"
+                data={tasks}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                onsort={onHandleSort}  
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
